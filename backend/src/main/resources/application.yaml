@@ -1,3 +1,13 @@
 spring:
   application:
     name: taskmanager
+  datasource:
+    url: jdbc:postgresql://localhost:5432/taskdb
+    username: artemvoronin
+    password: jxtym_nhelysq_gfhjkm
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
