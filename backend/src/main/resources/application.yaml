@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: taskmanager
+  datasource:
+    url: jdbc:postgresql://localhost:5432/taskdb
+    username: artemvoronin
+    password: jxtym_nhelysq_gfhjkm
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+taskmanager:
+  app:
+    jwtSecret: c3VwZXJzZWNyZXRqd3RrZXl0aGF0aXNtb3JldGhhbjI1NmJpdHNsb25nYW5kc2hvdWxkYmVDaGFuZ2VkaW5wcm9kdWN0aW9u
+    jwtExpirationMs: 86400000
+    jwtRememberMeExpirationMs: 2592000000
