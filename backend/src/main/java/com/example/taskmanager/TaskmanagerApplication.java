@@ -43,10 +43,10 @@ public class TaskmanagerApplication {
             Long user1Id = jdbcTemplate.queryForObject("SELECT id FROM users WHERE username = 'user1'", Long.class);
             Long user2Id = jdbcTemplate.queryForObject("SELECT id FROM users WHERE username = 'user2'", Long.class);
 
-            jdbcTemplate.execute("INSERT INTO groups (groupname, description, created_by_id, grouppassword) VALUES ('Project Alpha', 'Main project group', " + adminId + ", '" + groupPasswordHash + "')");
-            jdbcTemplate.execute("INSERT INTO groups (groupname, description, created_by_id, grouppassword) VALUES ('Project Beta', 'Secondary project group', " + user1Id + ", '" + groupPasswordHash + "')");
-            Long groupAlphaId = jdbcTemplate.queryForObject("SELECT id FROM groups WHERE groupname = 'Project Alpha'", Long.class);
-            Long groupBetaId = jdbcTemplate.queryForObject("SELECT id FROM groups WHERE groupname = 'Project Beta'", Long.class);
+            jdbcTemplate.execute("INSERT INTO groups (group_name, description, created_by_id, group_password) VALUES ('Project Alpha', 'Main project group', " + adminId + ", '" + groupPasswordHash + "')");
+            jdbcTemplate.execute("INSERT INTO groups (group_name, description, created_by_id, group_password) VALUES ('Project Beta', 'Secondary project group', " + user1Id + ", '" + groupPasswordHash + "')");
+            Long groupAlphaId = jdbcTemplate.queryForObject("SELECT id FROM groups WHERE group_name = 'Project Alpha'", Long.class);
+            Long groupBetaId = jdbcTemplate.queryForObject("SELECT id FROM groups WHERE group_name = 'Project Beta'", Long.class);
 
             jdbcTemplate.execute("INSERT INTO user_group (group_id, user_id) VALUES (" + groupAlphaId + ", " + adminId + ")");
             jdbcTemplate.execute("INSERT INTO user_group (group_id, user_id) VALUES (" + groupAlphaId + ", " + user1Id + ")");
