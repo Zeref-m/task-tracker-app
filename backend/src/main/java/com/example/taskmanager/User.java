@@ -1,5 +1,9 @@
 package com.example.taskmanager;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -7,23 +11,26 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "username cannot be empty")
-    @Size(min = 3, max = 50, message = "username must be between 3 and 50 characters long")
+    @NotBlank(message = "Имя пользователя не может быть пустым")
+    @Size(min = 3, max = 50, message = "Имя пользователя должно содержать от 3 до 50 символов")
     @Column(nullable = false, unique = true)
     private String username;
 
-    @NotBlank(message ="email cannot be empty")
-    @Email(message = "incorrect email")
+    @NotBlank(message = "Email не может быть пустым")
+    @Email(message = "Некорректный формат email")
     @Column(nullable = false, unique = true)
     private String email;
 
-    @NotBlank(message = "password cannot be empty")
-    @Size(min = 8, message = "password must be at least 6 characters long")
+    @NotBlank(message = "Пароль не может быть пустым")
+    @Size(min = 3, message = "Пароль должен содержать минимум 3 символа")
     @Column(nullable = false)
     private String password;
 }
